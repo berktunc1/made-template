@@ -33,7 +33,7 @@ pipeline airportsPipeline {
     block airportsTableInterpreter oftype TableInterpreter {
         header: true;
         columns: [
-            "Lfd. Nummer" oftype integer,
+            "Lfd. Nummer" oftype text,
             "Name des Flughafens" oftype text,
             "Ort" oftype text,
             "Land" oftype text,
