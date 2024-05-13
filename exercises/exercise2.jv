@@ -37,9 +37,17 @@ pipeline TreesPipeline{
             "stadtteil" oftype valid_stadtteil,
             "standort" oftype text,
             "baumart_botanisch" oftype text,
-            "id" oftype text,
+            "id" oftype geoCor,
             "baumfamilie" oftype text,
         ];
+    }
+
+    valuetype geoCor oftype text{
+        constraints:[coordinates];
+    }
+
+    constraint coordinates oftype RegexConstraint{
+        regex: /^\d{1,3}\.\d+,\d{1,3}\.\d+$/;
     }
 
     block TreesLoader oftype SQLiteLoader {
