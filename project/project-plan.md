@@ -26,7 +26,7 @@ Referring to the correlation between mortality rates caused by road traffic inju
 
 This dataset from the World Bank records the mortality rate caused by road traffic injuries per 100,000 population, providing a measure of road safety across countries. 
 
-### Datasource1: OurWorldinData
+### Datasource2: OurWorldinData
 * Source: https://ourworldindata.org/grapher/number-of-deaths-gbd
 * Data Type: CSV
 
