@@ -2,17 +2,19 @@
 
 ## Title
 <!-- Give your project a short title. -->
-Analyzing the Relationship between Road Traffic Injuries and Number of Deaths Globally
+Analyzing the Impact of Population Growth on CO2 Emissions
 
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-1. What is the correlation between mortality rates caused by road traffic injuries and the number of deaths worldwide?
+1. What is the correlation between population and CO2 Emissions worldwide?
 
 ## Description
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-Referring to the correlation between mortality rates caused by road traffic injuries and the number of deaths worldwide globally, is an important problem because road traffic injuries pose a significant threat to public health worldwide, resulting in a substantial number of fatalities annually. This project analyzes this relationship, using statistical methods. The results can provide valuable insights into the extent to which road traffic injury incidence influences mortality rates globally.
+Referring to the correlation between population and CO2 emissions globally is an important problem because CO2 emissions are a primary driver of climate change. These emissions are primarily caused by the burning of fossil fuels, such as coal, oil and natural gas, for energy and industrial processes, as well as by deforestation. As the population increases, CO2 emissions are exacerbated due to higher energy demands, increased transportation needs and greater consumption of goods and services. Understanding this correlation is essential for developing effective strategies to mitigate climate change and manage environmental sustainability.$$$$$$$$
+
+This project analyzes this relationship, using statistical methods. The results can provide valuable insights into the extent to which road traffic injury incidence influences mortality rates globally.
 
 
 ## Datasources
