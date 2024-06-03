@@ -1,0 +1,79 @@
+
+pipeline GoodsPipeline {
+
+    GoodsExtractor 
+    -> GoodsTextFileInterpreter
+    -> GoodsCSVInterpreter
+    -> GoodsHeaderDeleter
+    -> NameAssign1
+    -> NameAssign2
+    -> GoodsTableInterpreter
+    -> GoodsLoader;
+
+
+    block GoodsExtractor oftype HttpExtractor {
+        url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
+    }
+
+    block GoodsTextFileInterpreter oftype TextFileInterpreter {
+        encoding: "latin6";
+    }
+
+    block GoodsCSVInterpreter oftype CSVInterpreter { 
+        delimiter: ";";
+    }
+    
+    block GoodsHeaderDeleter oftype RowDeleter {
+        delete: [row 1, row 2, row 3, row 4, row 5, row 6, row 7, row 8, row 41337, row 41338, row 41339]; 
+    }
+
+    block NameAssign1 oftype CellWriter{
+        at:range A1:E1;
+        write:['year', 'month', 'goods_id', 'goods_name', 'goods_source'];
+    }
+     
+    block NameAssign2 oftype CellWriter{
+        at:range AT1:AU1;
+        write:['abroad', 'total'];
+    }
+
+    block GoodsTableInterpreter oftype TableInterpreter { 
+        header: false;
+        columns: [
+            "year" oftype positive,
+            "month" oftype GermanMonth,
+            "goods_id" oftype GoodsID,
+            "goods_name" oftype text,
+            "goods_source" oftype text,
+            "abroad" oftype positive,
+            "total" oftype positive
+        ];
+    }
+
+    valuetype positive oftype integer {
+        constraints: [positiveConstraint];
+    }
+
+    constraint positiveConstraint on integer: value >=0;
+
+    valuetype GermanMonth oftype text {
+        constraints: [MonthConstraint];
+    }
+
+    constraint MonthConstraint oftype AllowlistConstraint {
+        allowlist: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+    }
+
+    valuetype GoodsID oftype text {
+        constraints: [GoodsIDConstraint];
+    }
+
+    constraint GoodsIDConstraint oftype RegexConstraint {
+        regex: /^NST7-[0-9A-Z]{3}$/;
+    }
+
+    block GoodsLoader oftype SQLiteLoader {
+        table: "goods";
+        file: "./goodsTransportedByTrain.sqlite";
+    }
+}
