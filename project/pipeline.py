@@ -27,12 +27,14 @@ def load_data(data_folder):
 def clean_data(df):
     df.dropna(axis=1, how='all', inplace=True)
     df.dropna(thresh=5, inplace=True)
+    df = df.loc[df.notna().all(axis=1)]
+    columns_to_keep = ['Country Name', 'Country Code', 'Indicator Name', 'Indicator Code'] + \
+                      [str(year) for year in range(1990, 2021)]
+    df = df[columns_to_keep]
+
     print("Number of rows with NaN values: ",df.isnull().sum().sum())
     df.dropna(inplace=True)
     print("New number of rows with NaN values: ",df.isnull().sum().sum())
-    print("\nTotal number of zero values in the DataFrame:", (df == 0).sum().sum())
-    df = df[(df != 0).all(axis=1)]
-    print("\nNew total number of zero values in the DataFrame:", (df == 0).sum().sum())
     df.reset_index(drop=True, inplace=True)
 
     print("\n\nDataFrame after cleaning:")
