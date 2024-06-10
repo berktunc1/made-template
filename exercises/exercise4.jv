@@ -52,7 +52,7 @@ pipeline TemperaturesPipeline {
  transform CelsiusToFahrenheit {
      from Celsius oftype decimal;
      to Fahrenheit oftype decimal;
-     Fahrenheit: Celsius * 9/5 + 32;
+     Fahrenheit: (Celsius * 9/5) + 32;
  }
 
  block TemperatureCelToFah oftype TableTransformer {
