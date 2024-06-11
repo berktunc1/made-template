@@ -5,27 +5,22 @@ import subprocess
 class TestPipeline(unittest.TestCase):
 
     def setUp(self):
-        # Define the paths to check
         self.data_dir = os.path.join(os.path.dirname(__file__), "../data")
         self.co2_db_path = os.path.join(self.data_dir, "co2_emissions.sqlite")
         self.population_db_path = os.path.join(self.data_dir, "population.sqlite")
 
-        # Ensure the data directory exists
         os.makedirs(self.data_dir, exist_ok=True)
 
-        # Remove existing database files before running the pipeline
         if os.path.exists(self.co2_db_path):
             os.remove(self.co2_db_path)
         if os.path.exists(self.population_db_path):
             os.remove(self.population_db_path)
 
     def test_pipeline(self):
-        # Run the data pipeline script
         print("Running data pipeline script...")
         subprocess.run(["python", os.path.join(os.path.dirname(__file__), "pipeline.py")], check=True)
         print("Data pipeline script executed.")
 
-        # Check that the output files exist
         co2_exists = os.path.exists(self.co2_db_path)
         population_exists = os.path.exists(self.population_db_path)
         
