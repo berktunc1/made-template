@@ -18,9 +18,9 @@ def extract_data(zip_file_path, extraction_path):
     with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
         zip_ref.extractall(extraction_path)
 
-def load_data(data_folder):
+def load_data(data_folder, code):
     for file in os.listdir(data_folder):
-        if file.endswith(".csv") and "Metadata" not in file:
+        if file.endswith(code + ".csv") and "Metadata" not in file:
             data_file_path = os.path.join(data_folder, file)
             return pd.read_csv(data_file_path, skiprows=4)
 
@@ -51,36 +51,36 @@ def store_data(df, database_path,table_name):
 def main():
     # Step 1: Pull the Data
     url = "https://api.worldbank.org/v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv"
-    zip_file_path = "datasets/final/worldbank_co2_emissions.zip"
+    zip_file_path = "made-template/data/worldbank_co2_emissions.zip"
     if download_data(url, zip_file_path):
         # Step 2: Extract and Transform the Data
-        extraction_path = "datasets/final"
+        extraction_path = "made-template/data"
         extract_data(zip_file_path, extraction_path)
-        df = load_data(extraction_path)
+        df = load_data(extraction_path,"248920")
         if df is not None:
             print(df.info())
             print(df.columns)
             df = clean_data(df)
 
             # Step 3: Store the Data in SQLite
-            database_path = "datasets/final/co2_emissions.sqlite"
+            database_path = "made-template/data/co2_emissions.sqlite"
             store_data(df, database_path, 'co2_emissions')
 
     # Step 1: Pull the Data
     url = "https://api.worldbank.org/v2/en/indicator/SP.POP.TOTL?downloadformat=csv"
-    zip_file_path = "datasets/final2/population.zip"
+    zip_file_path = "made-template/data/population.zip"
     if download_data(url, zip_file_path):
         # Step 2: Extract and Transform the Data
-        extraction_path = "datasets/final2"
+        extraction_path = "made-template/data"
         extract_data(zip_file_path, extraction_path)
-        df = load_data(extraction_path)
+        df = load_data(extraction_path,"267401")
         if df is not None:
             print(df.info())
             print(df.columns)
             df = clean_data(df)
 
             # Step 3: Store the Data in SQLite
-            database_path = "datasets/final2/population.sqlite"
+            database_path = "made-template/data/population.sqlite"
             store_data(df, database_path, 'population')
 
 
