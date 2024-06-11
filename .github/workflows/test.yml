@@ -29,4 +29,4 @@ jobs:
       - name: Run tests
         run: |
           chmod +x project/tests.sh
-          made-template/project/tests.sh
+          ../made-template/project/tests.sh
