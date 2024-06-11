@@ -28,5 +28,5 @@ jobs:
 
       - name: Run tests
         run: |
-          chmod +x ./made-template/project/tests.sh
+          chmod +x project/tests.sh
           ./made-template/project/tests.sh
