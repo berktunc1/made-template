@@ -14,7 +14,6 @@ class TestPipeline(unittest.TestCase):
             os.remove(self.population_db_path)
 
     def test_pipeline(self):
-        def test_pipeline(self):
         print("Running data pipeline script...")
         result = subprocess.run(["python", os.path.join(os.path.dirname(__file__), "pipeline.py")], capture_output=True, text=True)
         print("Data pipeline script executed.")
