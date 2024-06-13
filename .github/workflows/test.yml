@@ -26,10 +26,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pandas
 
+      - name: Install dos2unix
+        run: sudo apt-get update && sudo apt-get install -y dos2unix
+
+      - name: Convert line endings
+        run: dos2unix project/tests.sh
+
       - name: Debugging Line Endings
         run: |
           file project/tests.sh
-          dos2unix project/tests.sh
           od -c project/tests.sh
 
       - name: Run tests
