@@ -29,9 +29,10 @@ jobs:
       - name: Debugging Line Endings
         run: |
           file project/tests.sh
+          dos2unix project/tests.sh
           od -c project/tests.sh
 
       - name: Run tests
         run: |
           chmod +x project/tests.sh
-          project/tests.sh
+          ./project/tests.sh
