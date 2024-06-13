@@ -51,10 +51,10 @@ def store_data(df, database_path,table_name):
 def main():
     # Step 1: Pull the Data
     url = "https://api.worldbank.org/v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv"
-    zip_file_path = "made-template/data/worldbank_co2_emissions.zip"
+    zip_file_path = "../data/worldbank_co2_emissions.zip"
     if download_data(url, zip_file_path):
         # Step 2: Extract and Transform the Data
-        extraction_path = "made-template/data"
+        extraction_path = "../data"
         extract_data(zip_file_path, extraction_path)
         df = load_data(extraction_path,"248920")
         if df is not None:
@@ -63,15 +63,15 @@ def main():
             df = clean_data(df)
 
             # Step 3: Store the Data in SQLite
-            database_path = "made-template/data/co2_emissions.sqlite"
+            database_path = "../data/co2_emissions.sqlite"
             store_data(df, database_path, 'co2_emissions')
 
     # Step 1: Pull the Data
     url = "https://api.worldbank.org/v2/en/indicator/SP.POP.TOTL?downloadformat=csv"
-    zip_file_path = "made-template/data/population.zip"
+    zip_file_path = "../data/population.zip"
     if download_data(url, zip_file_path):
         # Step 2: Extract and Transform the Data
-        extraction_path = "made-template/data"
+        extraction_path = "../data"
         extract_data(zip_file_path, extraction_path)
         df = load_data(extraction_path,"267401")
         if df is not None:
@@ -80,7 +80,7 @@ def main():
             df = clean_data(df)
 
             # Step 3: Store the Data in SQLite
-            database_path = "made-template/data/population.sqlite"
+            database_path = "../data/population.sqlite"
             store_data(df, database_path, 'population')
 
 
