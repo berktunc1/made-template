@@ -8,8 +8,6 @@ class TestPipeline(unittest.TestCase):
         self.co2_db_path = "../data/co2_emissions.sqlite"
         self.population_db_path = "../data/population.sqlite"
 
-        os.makedirs(self.data_dir, exist_ok=True)
-
         if os.path.exists(self.co2_db_path):
             os.remove(self.co2_db_path)
         if os.path.exists(self.population_db_path):
