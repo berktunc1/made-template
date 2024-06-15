@@ -43,9 +43,10 @@ def clean_data(df):
     return df
 
 def store_data(df, database_path,table_name):
-    print(f"Simulating storing data in SQLite database at: {database_path}")
-    # Simulate storing data without actually saving to SQLite
-    return True
+    conn = sqlite3.connect(database_path)
+    df.to_sql(table_name, conn, if_exists='replace', index=False)
+    conn.close()
+    print(f"Data pipeline executed successfully. Cleaned data stored at {database_path}")
 
 def main():
     # Step 1: Pull the Data
