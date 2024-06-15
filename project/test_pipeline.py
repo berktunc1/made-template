@@ -14,8 +14,10 @@ class TestPipeline(unittest.TestCase):
 
         if os.path.exists(self.co2_db_path):
             os.remove(self.co2_db_path)
+            print("co2 db deleted.")
         if os.path.exists(self.population_db_path):
             os.remove(self.population_db_path)
+            print("population db deleted.")
 
     def test_pipeline(self):
         print("Running data pipeline script...")
