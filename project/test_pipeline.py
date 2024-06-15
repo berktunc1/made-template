@@ -7,8 +7,8 @@ class TestPipeline(unittest.TestCase):
     def setUp(self):
         self.script_dir = os.path.dirname(os.path.abspath(__file__))
         self.data_dir = os.path.join(self.script_dir,'..','data')
-        self.co2_db_path = os.path.join(self.data_dir,"co2_emissions.sqlite")
-        self.population_db_path = os.path.join(self.data_dir,"population.sqlite")
+        self.co2_db_path = "/home/runner/work/made-template/made-template/data/co2_emissions.sqlite")
+        self.population_db_path = "/home/runner/work/made-template/made-template/data/population.sqlite"
 
         os.makedirs(self.data_dir, exist_ok=True)
 
