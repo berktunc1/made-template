@@ -41,6 +41,12 @@ jobs:
           file project/pipeline.sh
           od -c project/pipeline.sh
 
+      - name: List directory contents
+        run: |
+          ls -al
+          ls -al project
+          ls -al project/../data
+
       - name: Run tests
         run: |
           chmod +x project/tests.sh
