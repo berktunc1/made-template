@@ -26,28 +26,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pandas
 
-      - name: Install dos2unix
-        run: sudo apt-get update && sudo apt-get install -y dos2unix
-
-      - name: Convert line endings
-        run: |
-          dos2unix project/tests.sh
-          dos2unix project/pipeline.sh
-
-      - name: Debugging Line Endings
-        run: |
-          file project/tests.sh
-          od -c project/tests.sh
-          file project/pipeline.sh
-          od -c project/pipeline.sh
-
-      - name: List directory contents
-        run: |
-          ls -al
-          ls -al project
-          ls -al project/../data
-
       - name: Run tests
         run: |
-          chmod +x project/tests.sh
-          ./project/tests.sh
+          python -m unittest discover -s project -p 'test_pipeline.py'
