@@ -2,23 +2,22 @@ import unittest
 import subprocess
 import io
 import sys
+import os
 
 class TestPipeline(unittest.TestCase):
 
     def test_pipeline(self):
-        # Capture the output during the execution of the script
         captured_output = io.StringIO()
         sys.stdout = captured_output
 
-        subprocess.run(["python", "pipeline.py"], check=True)
-        
+        script_path = os.path.join(os.path.dirname(__file__), "pipeline.py")
+        result = subprocess.run(["python", script_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         sys.stdout = sys.__stdout__
 
-        # Get the output and check for specific print statement
-        output = captured_output.getvalue()
+        # Get the output and check for specific print statements
+        output = result.stdout
         print("Captured Output:\n", output)
 
-      
         self.assertIn("Data pipeline executed successfully. Cleaned data stored at ../data/co2_emissions.sqlite", output,
                       "The CO2 emissions success message was not found in the output.")
 
