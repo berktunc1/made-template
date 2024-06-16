@@ -1,44 +1,29 @@
-import os
 import unittest
 import subprocess
+import io
+import sys
 
 class TestPipeline(unittest.TestCase):
 
-    def setUp(self):
-        self.script_dir = os.path.dirname(os.path.abspath(__file__))
-        self.data_dir = os.path.join(self.script_dir,'..','data')
-        self.co2_db_path = "../data/co2_emissions.sqlite"
-        self.population_db_path = "../data/population.sqlite"
-
-        os.makedirs(self.data_dir, exist_ok=True)
-
-        if os.path.exists(self.co2_db_path):
-            os.remove(self.co2_db_path)
-            print("co2 db deleted.")
-        if os.path.exists(self.population_db_path):
-            os.remove(self.population_db_path)
-            print("population db deleted.")
-
     def test_pipeline(self):
-        print("Running data pipeline script...")
-        subprocess.run(["python", os.path.join(os.path.dirname(__file__), "pipeline.py")], check=True)
-        print("Data pipeline script executed.")
+        # Capture the output during the execution of the script
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
 
-        co2_exists = os.path.exists(self.co2_db_path)
-        population_exists = os.path.exists(self.population_db_path)
+        subprocess.run(["python", "pipeline.py"], check=True)
         
-        if co2_exists:
-            print(f"Dataset exists: {self.co2_db_path}")
-        else:
-            print(f"Dataset does not exist: {self.co2_db_path}")
-        
-        if population_exists:
-            print(f"Dataset exists: {self.population_db_path}")
-        else:
-            print(f"Dataset does not exist: {self.population_db_path}")
+        sys.stdout = sys.__stdout__
 
-        self.assertTrue(co2_exists, "CO2 emissions database file does not exist.")
-        self.assertTrue(population_exists, "Population database file does not exist.")
+        # Get the output and check for specific print statement
+        output = captured_output.getvalue()
+        print("Captured Output:\n", output)
+
+      
+        self.assertIn("Data pipeline executed successfully. Cleaned data stored at ../data/co2_emissions.sqlite", output,
+                      "The CO2 emissions success message was not found in the output.")
+
+        self.assertIn("Data pipeline executed successfully. Cleaned data stored at ../data/population.sqlite", output,
+                      "The Population success message was not found in the output.")
 
 if __name__ == "__main__":
     unittest.main()
