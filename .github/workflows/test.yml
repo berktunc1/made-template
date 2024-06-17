@@ -28,6 +28,5 @@ jobs:
 
       - name: Run tests
         run: |
-          cd made-template/project
-          chmod +x tests.sh
-          ./tests.sh
+          chmod +x project/tests.sh
+          ./project/tests.sh
