@@ -11,6 +11,7 @@ class TestPipeline(unittest.TestCase):
 
         # Capture stdout and stderr
         output = result.stdout
+        output = output.lstrip()
         errors = result.stderr
 
         print("Captured Output:\n", output)
