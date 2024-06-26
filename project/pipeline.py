@@ -27,14 +27,9 @@ def clean_data(df):
                       [str(year) for year in range(1990, 2021)]
     df = df[columns_to_keep]
 
-    print("Number of rows with NaN values: ", df.isnull().sum().sum())
     df.dropna(inplace=True)
-    print("New number of rows with NaN values: ", df.isnull().sum().sum())
     df.reset_index(drop=True, inplace=True)
 
-    print("\n\nDataFrame after cleaning:")
-    print(df.info())
-    print(df.columns)
     return df
 
 def store_data(df, database_path, table_name):
@@ -53,8 +48,6 @@ def main():
  
         co2_df = extract_data(co2_zip_file)
         if co2_df is not None:
-            print(co2_df.info())
-            print(co2_df.columns)
             co2_df = clean_data(co2_df)
 
             database_path = ":memory:"  # Using in-memory database for demonstration
@@ -66,8 +59,6 @@ def main():
         # Extract and load population data
         population_df = extract_data(population_zip_file)
         if population_df is not None:
-            print(population_df.info())
-            print(population_df.columns)
             population_df = clean_data(population_df)
 
             database_path = ":memory:"  # Using in-memory database for demonstration
