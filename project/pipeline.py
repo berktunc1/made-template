@@ -22,7 +22,7 @@ def extract_data(zip_file):
 def clean_data(df):
   
     df.dropna(axis=1, how='all', inplace=True)
-    print("Columns with all NaN values are dropped.")
+    #print("Columns with all NaN values are dropped.")
 
     df = df.loc[df.notna().all(axis=1)]
     print("Rows with any NaN values are dropped.")
