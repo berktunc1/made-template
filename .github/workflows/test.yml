@@ -17,9 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: List directory contents
-        run: |
-          ls -R
-          ls -R made-template/project
+        run: ls -R
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -34,10 +32,10 @@ jobs:
       - name: Convert line endings for tests.sh
         run: |
           sudo apt-get install -y dos2unix
-          dos2unix made-template/project/tests.sh
+          dos2unix project/tests.sh
 
       - name: Run tests
         run: |
-          cd made-template/project
+          cd project
           chmod +x tests.sh
           ./tests.sh
