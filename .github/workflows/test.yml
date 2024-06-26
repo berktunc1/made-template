@@ -16,6 +16,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: List directory contents
+        run: ls -R
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -26,7 +29,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pandas
 
+      - name: Convert line endings for tests.sh
+        run: |
+          sudo apt-get install dos2unix
+          dos2unix made-template/project/tests.sh
+
       - name: Run tests
         run: |
-          chmod +x project/tests.sh
-          ./project/tests.sh
+          cd made-template/project
+          chmod +x tests.sh
+          ./tests.sh
