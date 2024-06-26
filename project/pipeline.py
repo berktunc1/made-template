@@ -46,7 +46,7 @@ def main():
         co2_df = extract_data(co2_zip_file)
         if co2_df is not None:
             co2_df = clean_data(co2_df)
-            database_path = ":memory:"  # Using in-memory database for demonstration
+            database_path = "./datasets/co2_emissions.sqlite"  
             store_data(co2_df, database_path, 'co2_emissions')
 
 
@@ -55,7 +55,7 @@ def main():
         population_df = extract_data(population_zip_file)
         if population_df is not None:
             population_df = clean_data(population_df)
-            database_path = ":memory:"  # Using in-memory database for demonstration
+            database_path = "./datasets/population.sqlite"  
             store_data(population_df, database_path, 'population')
 
 if __name__ == "__main__":
