@@ -26,10 +26,8 @@ def clean_data(df):
     columns_to_keep = ['Country Name', 'Country Code', 'Indicator Name', 'Indicator Code'] + \
                       [str(year) for year in range(1990, 2021)]
     df = df[columns_to_keep]
-
     df.dropna(inplace=True)
     df.reset_index(drop=True, inplace=True)
-
     return df
 
 def store_data(df, database_path, table_name):
@@ -45,22 +43,18 @@ def main():
     
     co2_zip_file = download_data(co2_url)
     if co2_zip_file:
- 
         co2_df = extract_data(co2_zip_file)
         if co2_df is not None:
             co2_df = clean_data(co2_df)
-
             database_path = ":memory:"  # Using in-memory database for demonstration
             store_data(co2_df, database_path, 'co2_emissions')
 
 
     population_zip_file = download_data(population_url)
     if population_zip_file:
-        # Extract and load population data
         population_df = extract_data(population_zip_file)
         if population_df is not None:
             population_df = clean_data(population_df)
-
             database_path = ":memory:"  # Using in-memory database for demonstration
             store_data(population_df, database_path, 'population')
 
