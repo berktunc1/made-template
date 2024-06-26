@@ -5,7 +5,6 @@ import os
 class TestPipeline(unittest.TestCase):
 
     def test_pipeline(self):
-        # Run the pipeline script with the use_mock parameter
         script_path = os.path.join(os.path.dirname(__file__), "pipeline.py")
         result = subprocess.run(["python", script_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
@@ -16,9 +15,16 @@ class TestPipeline(unittest.TestCase):
         print("Captured Output:\n", output)
         print("Captured Errors:\n", errors)
 
-        # Check if the output contains the expected print statements
-        self.assertIn("Data pipeline executed successfully. Cleaned data stored at :memory:", output,
-                      "The success message was not found in the output.")
+        expected_outputs = [
+            "Columns with all NaN values are dropped.",
+            "Rows with any NaN values are dropped.",
+            "Number of columns: 35",
+            "Data pipeline executed successfully. Cleaned data stored at :memory:"
+        ]
+
+        # Check if all expected output fragments are present in the output
+        for expected in expected_outputs:
+            self.assertIn(expected, output, f"The expected message '{expected}' was not found in the output.")
 
 if __name__ == "__main__":
     unittest.main()
