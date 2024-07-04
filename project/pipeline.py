@@ -28,7 +28,7 @@ def clean_data(df):
     print("Rows with any NaN values are dropped.")
 
     # Select specific columns to keep
-    columns_to_keep = ['Country Name', 'Country Code', 'Indicator Name', 'Indicator Code'] + \
+    columns_to_keep = ['Country Name', 'Country Code'] + \
                       [str(year) for year in range(1990, 2021)]
     df = df[columns_to_keep]
 
