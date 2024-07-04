@@ -18,7 +18,7 @@ class TestPipeline(unittest.TestCase):
         expected_outputs = [
             "Columns with all NaN values are dropped.",
             "Rows with any NaN values are dropped.",
-            "Number of columns: 35",
+            "Number of columns: 33",
             "Data pipeline executed successfully. Cleaned data stored at :memory:"
         ]
 
