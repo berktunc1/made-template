@@ -27,5 +27,5 @@ For instance: C:/Users/username/Desktop/co2.sqlite and <br>C:/Users/username/Des
 
 2- Run the pipeline.py using project/pipeline.sh <br>
 Datasets are ready for the analysis.<br>
-To review the project findings in detail, refer to the [project/analysis-report.pdf](project/analysis-report.pdf) and [project/data_analysis_code.ipynb](project/data_analysis_code.ipynb).
+To review the project findings in detail, refer to the [project/analysis-report.pdf](analysis-report.pdf) and [project/data_analysis_code.ipynb](data_analysis_code.ipynb).
 
