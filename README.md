@@ -22,3 +22,10 @@ changes. However, to give a direct answer to our main question, we need better w
 population growth and CO2 emission increase.
 
 ## Usage
+1- Download project/pipeline.py. Edit file -> instead of :memory:, specify a path for the datasets.
+For instance: C:/Users/username/Desktop/co2.sqlite and C:/Users/Beerk/Desktop/population.sqlite
+
+2- Run the pipeline.py using project/pipeline.sh
+Datasets are ready for the analysis.
+To review the project findings in detail, refer to the project/analysis-report.pdf and project/data_analysis_code.ipynb.
+
