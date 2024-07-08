@@ -12,7 +12,7 @@ helps identify the impact of population dynamics on environmental sustainability
 decisions for emission reductions.
 
 ## Project Summary
-I analyzed countries with the lowest CO2 emission increases relative to their population growth by calculating population growth and CO2 emission increase from 1990 to 2020 using specific formulas. Then, I compared and ranked the countries based on the ratio of CO2 emission growth to population growth.
+I analyzed countries to identify those with the lowest CO2 emission increases relative to their population growth from 1990 to 2020. This involved calculating the percentage growth in population and CO2 emissions for each country using specific formulas. By comparing and ranking the countries based on the ratio of CO2 emission growth to population growth, I identified those with the most efficient environmental performance relative to their population increase. 
 
 ## Conclusions
 Countries at the top of the list likely benefit from a combination of proactive environmental
