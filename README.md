@@ -10,3 +10,15 @@ This project explores the relationship between CO2 emissions and population grow
 Analysing the relationship between CO2 emissions and population growth of countries is crucial as it
 helps identify the impact of population dynamics on environmental sustainability, guiding policy
 decisions for emission reductions.
+
+## Project Summary
+I analyzed countries with the lowest CO2 emission increases relative to their population growth by calculating population growth and CO2 emission increase from 1990 to 2020 using specific formulas. Then, I compared and ranked the countries based on the ratio of CO2 emission growth to population growth.
+
+## Conclusions
+Countries in this list likely benefit from a combination of proactive environmental
+policies, technological innovation, public engagement in sustainability and favorable economic
+structures that collectively contribute to managing CO2 emissions growth despite demographic
+changes. However, to give a direct answer to our main question, we need better ways to calculate
+population growth and CO2 emission increase.
+
+## Usage
